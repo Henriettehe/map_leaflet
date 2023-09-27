@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting started with Leaflef map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+    <style>
+        #firstmap {
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="firstmap"></div>
+    <script>
+        const firstmap = L.map("firstmap", {
+            center: [59.1294, 11.3537], //Søk på sted, gå tilbake og se på tallene i url. 
+            zoom: 16, //Entry zoom level, finner den bakerst i openstreetmap.org
+            scrollWheelZoom: false //Disable zoom and scroll. 
+        })
+
+        //Tegne kartet: kilde: https://leafletjs.com/examples/quick-start/ 
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(firstmap);
+
+        //Adding markers to the map: 
+        const centerMarker = L.marker([59.1294, 11.3537]).addTo(firstmap)
+
+    </script>
+</body>
+</html>
